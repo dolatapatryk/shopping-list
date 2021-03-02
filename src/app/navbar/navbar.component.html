@@ -1,0 +1,19 @@
+<mat-toolbar class="navigation-bar navbar navbar-expand navbar-dark bg-dark">
+    <div class="navbar-nav w-100 align-items-center">
+        <button mat-icon-button (click)="toggleSidenav.emit()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <a class="nav-item nav-link" [routerLinkActiveOptions]="{exact:true}" routerLink="/"
+           routerLinkActive="active">Home</a>
+        <a class="nav-item nav-link" routerLink="/departments" routerLinkActive="active">Działy</a>
+        <div class="d-flex justify-content-end w-100">
+            <ul class="d-flex">
+                <li>
+                    <button mat-icon-button>
+                        <mat-icon>settings</mat-icon>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</mat-toolbar>

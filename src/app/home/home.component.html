@@ -1,0 +1,24 @@
+<app-navbar (toggleSidenav)="navigationSidenav.toggle()"></app-navbar>
+<mat-sidenav-container class="sidenav-container" autosize>
+    <mat-sidenav #navigationSidenav mode="over" role="navigation">
+        <mat-toolbar>
+        </mat-toolbar>
+        <mat-nav-list>
+            <ng-container *ngIf="sidenavItems">
+<!--                <h2 matSubheader> SUB HEADER</h2>-->
+                <a mat-list-item routerLink="/" style="height: 0;"></a>
+                <a *ngFor="let item of sidenavItems"
+                   mat-list-item
+                   (click)="navigationSidenav.close()"
+                   [routerLink]="[item.route]"
+                   routerLinkActive="list-item-active">
+                    <mat-icon matListIcon class="nav-list-icon"> {{ item.icon }} </mat-icon>
+                    {{item.name}}
+                </a>
+            </ng-container>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content role="main">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
