@@ -1,0 +1,54 @@
+[
+    {
+        "id": 1,
+        "name": "ŚWIEŻE PRODUKTY/LODÓWKI"
+    },
+    {
+        "id": 2,
+        "name": "NABIAŁ/WĘDLINY"
+    },
+    {
+        "id": 3,
+        "name": "OWOCE/WARZYWA"
+    },
+    {
+        "id": 4,
+        "name": "MIĘSO"
+    },
+    {
+        "id": 5,
+        "name": "MAKARONY, RYŻE"
+    },
+    {
+        "id": 6,
+        "name": "SOSY, PRZYPRAWY"
+    },
+    {
+        "id": 7,
+        "name": "SŁODYCZE"
+    },
+    {
+        "id": 8,
+        "name": "MLEKO, CUKIER, MĄKA"
+    },
+    {
+        "id": 9,
+        "name": "PIECZYWO"
+    },
+    {
+        "id": 10,
+        "name": "CHEMIA, ŚRODKI CZYSTOŚCI, KOSMETYKI"
+    },
+    {
+        "id": 11,
+        "name": "NAPOJE"
+    },
+    {
+        "id": 12,
+        "name": "PRZEKĄSKI"
+    },
+    {
+        "id": 13,
+        "name": "ALKOHOLE"
+    }
+]

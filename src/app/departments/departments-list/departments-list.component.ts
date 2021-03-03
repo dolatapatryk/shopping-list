@@ -4,10 +4,10 @@ import { Department } from '../../models/department';
 
 @Component({
     selector: 'app-departments-layout',
-    templateUrl: './departments-layout.component.html',
-    styleUrls: ['./departments-layout.component.scss']
+    templateUrl: './departments-list.component.html',
+    styleUrls: ['./departments-list.component.scss']
 })
-export class DepartmentsLayoutComponent implements OnInit {
+export class DepartmentsListComponent implements OnInit {
     departments: Department[];
 
     constructor(private departmentsService: DepartmentsService) {
@@ -15,5 +15,9 @@ export class DepartmentsLayoutComponent implements OnInit {
 
     ngOnInit(): void {
         this.departments = this.departmentsService.getDepartments();
+    }
+
+    addDepartment() {
+        this.departmentsService.addDepartment({ id: 20, name: 'Test' });
     }
 }

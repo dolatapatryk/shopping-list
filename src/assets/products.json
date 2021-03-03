@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "SOK POMARAŃCZOWY 100%",
+        "categoryId": 1,
+        "unit": "but."
+    },
+    {
+        "id": 2,
+        "name": "LASAGNE",
+        "categoryId": 2,
+        "unit": "szt."
+    },
+    {
+        "id": 3,
+        "name": "ZIEMNIAKI",
+        "categoryId": 3,
+        "unit": "kg"
+    },
+    {
+        "id": 4,
+        "name": "LODY",
+        "categoryId": 4,
+        "unit": "opak."
+    },
+    {
+        "id": 5,
+        "name": "CHIPSY",
+        "categoryId": 12,
+        "unit": null
+    }
+]

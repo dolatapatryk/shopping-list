@@ -13,9 +13,9 @@ interface SidenavItem {
 })
 export class HomeComponent {
     sidenavItems: SidenavItem[] = [
-        { icon: 'menu', route: 'xd', name: 'Listy zakupów' },
-        { icon: 'menu', route: 'xd', name: 'Produkty' },
-        { icon: 'menu', route: 'departments', name: 'Działy' },
+        { icon: 'menu', route: '', name: 'Listy zakupów' },
+        { icon: 'menu', route: '/products', name: 'Produkty' },
+        { icon: 'menu', route: '/departments', name: 'Działy' },
     ];
 
     constructor() {

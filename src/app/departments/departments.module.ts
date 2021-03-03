@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DepartmentsLayoutComponent } from './departments-layout/departments-layout.component';
+import { DepartmentsListComponent } from './departments-list/departments-list.component';
 import { DepartmentsRoutingModule } from './departments-routing.module';
 import { DepartmentsService } from '../services/departments.service';
-import { MaterialModule } from '../material/material.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
-    declarations: [DepartmentsLayoutComponent],
+    declarations: [DepartmentsListComponent],
     imports: [
         CommonModule,
         DepartmentsRoutingModule,
-        MaterialModule
+        SharedModule
     ],
     providers: [DepartmentsService]
 })
