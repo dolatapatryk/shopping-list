@@ -1,4 +1,7 @@
 <app-list-layout [items]="departments"
                  (addButtonClicked)="addDepartment()">
+    <ng-template let-item="item" let-index="index">
+        {{index + 1}}. {{item.name}}
+    </ng-template>
 </app-list-layout>
 

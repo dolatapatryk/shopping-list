@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
 
 @Component({
     selector: 'app-list-layout',
@@ -8,6 +8,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ListLayoutComponent {
     @Input()
     items: any[];
+
+    @ContentChild(TemplateRef)
+    listItemTemplate: TemplateRef<any>;
 
     @Output()
     addButtonClicked: EventEmitter<any> = new EventEmitter<any>();

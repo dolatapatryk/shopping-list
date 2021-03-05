@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DepartmentsListComponent } from './departments-list/departments-list.component';
 import { DepartmentsRoutingModule } from './departments-routing.module';
-import { DepartmentsService } from '../services/departments.service';
 import { SharedModule } from '../shared/shared.module';
 
 
@@ -13,7 +12,7 @@ import { SharedModule } from '../shared/shared.module';
         DepartmentsRoutingModule,
         SharedModule
     ],
-    providers: [DepartmentsService]
+    providers: []
 })
 export class DepartmentsModule {
 }

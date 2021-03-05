@@ -19,7 +19,7 @@ export class ProductsListComponent implements OnInit {
 
     addProduct() {
         this.productsService.addProduct(
-            { id: 100, name: 'Test', categoryId: 12, unit: null }
+            { id: 100, name: 'Test', departmentId: 12, unit: null }
         );
     }
 }
