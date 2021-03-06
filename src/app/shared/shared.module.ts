@@ -4,6 +4,8 @@ import { ListLayoutComponent } from './list-layout/list-layout.component';
 import { MaterialModule } from '../material/material.module';
 import { DepartmentNamePipe } from './pipes/department-name.pipe';
 import { TouchListLayoutComponent } from './touch-list-layout/touch-list-layout.component';
+import { SwipeAngularListModule } from 'swipe-angular-list';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -16,11 +18,15 @@ import { TouchListLayoutComponent } from './touch-list-layout/touch-list-layout.
     exports: [
         ListLayoutComponent,
         MaterialModule,
-        DepartmentNamePipe
+        DepartmentNamePipe,
+        TouchListLayoutComponent,
+        FontAwesomeModule
     ],
     imports: [
         CommonModule,
-        MaterialModule
+        MaterialModule,
+        SwipeAngularListModule,
+        FontAwesomeModule
     ],
     providers: []
 })

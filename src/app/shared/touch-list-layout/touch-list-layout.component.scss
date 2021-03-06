@@ -1,0 +1,26 @@
+.swipe-list {
+    overflow: auto;
+    margin-bottom: 0.25rem;
+    padding-top: 0;
+}
+
+:host ::ng-deep .list-swipe div.mark {
+    background: unset !important;
+    border: unset !important;
+}
+
+.trash-icon {
+    color: red;
+}
+
+:host ::ng-deep div.swipe-w-100 div {
+    height: 100%;
+}
+
+:host ::ng-deep div.list-swipe {
+    margin: 0;
+}
+
+:host ::ng-deep div.options-btn {
+    //padding: 0;
+}
