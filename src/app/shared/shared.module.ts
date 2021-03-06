@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { ListLayoutComponent } from './list-layout/list-layout.component';
 import { MaterialModule } from '../material/material.module';
 import { DepartmentNamePipe } from './pipes/department-name.pipe';
+import { TouchListLayoutComponent } from './touch-list-layout/touch-list-layout.component';
 
 
 @NgModule({
     declarations: [
         ListLayoutComponent,
         ListLayoutComponent,
-        DepartmentNamePipe
+        DepartmentNamePipe,
+        TouchListLayoutComponent
     ],
     exports: [
         ListLayoutComponent,

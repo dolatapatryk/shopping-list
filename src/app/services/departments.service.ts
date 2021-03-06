@@ -7,6 +7,10 @@ import departments from '../../assets/departments.json';
 })
 export class DepartmentsService {
 
+    constructor() {
+        console.log(':::departmests service constructor');
+    }
+
     getDepartments(): Department[] {
         return departments;
     }

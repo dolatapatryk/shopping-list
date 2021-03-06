@@ -1,9 +1,12 @@
 <app-list-layout [items]="products"
                  (addButtonClicked)="addProduct()">
     <ng-template let-item="item" let-index="index">
-        <div class="d-flex flex-column">
+        <div class="d-flex flex-column w-100">
             <span>{{index + 1}}. {{item.name}}</span>
-            <span class="department-name">{{item.departmentId | departmentName}}</span>
+            <div class="d-flex product-info">
+                <span>{{item.departmentId | departmentName}}</span>
+                <span class="ml-auto">{{item.unit}}</span>
+            </div>
         </div>
     </ng-template>
 </app-list-layout>
