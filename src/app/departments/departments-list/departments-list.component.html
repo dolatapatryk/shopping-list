@@ -1,6 +1,6 @@
 <app-touch-list-layout [items]="departments" (addButtonClicked)="addDepartment()">
     <ng-template let-item="item" let-index="index">
-        <div class="d-flex">
+        <div class="d-flex department-item-container">
             <div class="d-flex justify-content-center align-items-center h-100">
                 <span>{{index + 1}}. {{item.name}}</span>
             </div>

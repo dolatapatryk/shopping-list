@@ -16,7 +16,7 @@
                 </ng-template>
             </sw-item-list>
         </div>
-        <button mat-raised-button class="add-button mt-auto" (click)="addButtonClicked.emit()">
+        <button *ngIf="addButtonVisible" mat-raised-button class="add-button mt-auto" (click)="addButtonClicked.emit()">
             <i class="fas fa-plus"></i>
             Dodaj
         </button>

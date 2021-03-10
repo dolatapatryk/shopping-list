@@ -7,6 +7,10 @@ import products from '../../assets/products.json';
 })
 export class ProductsService {
 
+    constructor() {
+        console.log('::::init product service');
+    }
+
     getProducts(): Product[] {
         return products;
     }

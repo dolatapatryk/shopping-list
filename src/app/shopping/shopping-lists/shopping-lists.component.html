@@ -1,0 +1,11 @@
+<app-touch-list-layout [items]="lists" (addButtonClicked)="navigateToAddShoppingList()">
+    <ng-template let-item="item" let-index="index">
+        <div class="d-flex flex-column w-100 p-1">
+            <span>{{index + 1}}. {{item. name}}</span>
+            <div class="d-flex list-info">
+                <span class="text-truncate">{{item.description}}</span>
+                <span class="ml-auto hide-on-swipe products-count">prod. {{item.products.length}}</span>
+            </div>
+        </div>
+    </ng-template>
+</app-touch-list-layout>

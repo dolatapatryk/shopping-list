@@ -1,0 +1,14 @@
+div.list-info {
+    color: grey;
+    font-size: 0.8rem;
+}
+
+:host ::ng-deep div.list-swipe.left-swipe div.list-info {
+    flex-direction: row-reverse;
+}
+
+.products-count {
+    flex: 0 0 15%;
+    text-align: end;
+}
+

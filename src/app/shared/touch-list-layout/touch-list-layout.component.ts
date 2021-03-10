@@ -9,6 +9,9 @@ export class TouchListLayoutComponent implements OnInit {
     @Input()
     items: any[];
 
+    @Input()
+    addButtonVisible = true;
+
     @ContentChild(TemplateRef)
     listItemTemplate: TemplateRef<any>;
 

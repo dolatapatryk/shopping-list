@@ -1,0 +1,9 @@
+<div class="h-100 d-flex flex-column ">
+    <div class="product-list-container">
+        <app-products-list [searchable]="true" [addButtonVisible]="false"></app-products-list>
+    </div>
+    <div class="action-buttons mt-auto w-100 d-flex">
+        <button mat-raised-button (click)="back()">Anuluj</button>
+        <button mat-raised-button class="ml-auto">Zapisz</button>
+    </div>
+</div>

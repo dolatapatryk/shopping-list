@@ -6,6 +6,7 @@ import { DepartmentNamePipe } from './pipes/department-name.pipe';
 import { TouchListLayoutComponent } from './touch-list-layout/touch-list-layout.component';
 import { SwipeAngularListModule } from 'swipe-angular-list';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ProductsListComponent } from './products-list/products-list.component';
 
 
 @NgModule({
@@ -13,14 +14,16 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
         ListLayoutComponent,
         ListLayoutComponent,
         DepartmentNamePipe,
-        TouchListLayoutComponent
+        TouchListLayoutComponent,
+        ProductsListComponent
     ],
     exports: [
         ListLayoutComponent,
         MaterialModule,
         DepartmentNamePipe,
         TouchListLayoutComponent,
-        FontAwesomeModule
+        FontAwesomeModule,
+        ProductsListComponent
     ],
     imports: [
         CommonModule,
