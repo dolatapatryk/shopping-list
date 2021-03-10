@@ -19,8 +19,20 @@
 
 :host ::ng-deep div.list-swipe {
     margin: 0;
+    padding: 0.25em;
 }
 
 :host ::ng-deep div.options-btn {
-    //padding: 0;
+    width: 32vw;
+    padding: 0;
+}
+
+:host ::ng-deep div.option-list {
+    min-height: 3.25rem;
+    line-height: 3.25rem;
+}
+
+button.add-button {
+    //width: 80px;
+    //margin-left: auto;
 }
