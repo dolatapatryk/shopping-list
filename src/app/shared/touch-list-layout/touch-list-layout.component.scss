@@ -18,8 +18,9 @@
 }
 
 :host ::ng-deep div.list-swipe {
-    margin: 0;
-    padding: 0.25em;
+    margin: 0 0 0.75rem 0;
+    flex: 0 0 100%;
+    max-width: 100%;
 }
 
 :host ::ng-deep div.options-btn {
@@ -28,11 +29,32 @@
 }
 
 :host ::ng-deep div.option-list {
-    min-height: 3.25rem;
-    line-height: 3.25rem;
+    min-height: unset;
+    line-height: unset;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
-button.add-button {
-    //width: 80px;
-    //margin-left: auto;
+:host ::ng-deep sw-item-list>div {
+    display: flex;
+    flex-direction: row-reverse;
 }
+
+:host ::ng-deep div.options-btn.active {
+    transform: none !important;
+    position: unset !important;
+    flex: 0 0 45%;
+    max-width: 45%;
+    margin: 0 0 0.75rem 0;
+}
+
+:host ::ng-deep div.list-swipe.left-swipe {
+    transform: none !important;
+}
+
+:host ::ng-deep div.option-list i {
+    font-size: 1.1rem;
+}
+
+

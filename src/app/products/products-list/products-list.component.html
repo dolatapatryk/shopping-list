@@ -1,7 +1,7 @@
 <app-touch-list-layout [items]="products"
                  (addButtonClicked)="addProduct()">
     <ng-template let-item="item" let-index="index">
-        <div class="d-flex flex-column w-100">
+        <div class="d-flex flex-column w-100 p-1">
             <span>{{index + 1}}. {{item.name}}</span>
             <div class="d-flex product-info">
                 <span>{{item.departmentId | departmentName}}</span>
