@@ -9,3 +9,15 @@ body {
 * {
     touch-action: pan-y !important;
 }
+
+.mat-dialog-container {
+    padding: 0 !important;
+}
+
+.cdk-overlay-pane {
+    max-width: 95vw !important;
+}
+
+.mat-checkbox-checked .mat-checkbox-background {
+    background-color: #343a40 !important;
+}

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
-import { Product } from '../../models/product';
+import { ShoppingListProduct } from '../../models/product';
 import { ProductsService } from '../../services/products.service';
 import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
@@ -10,8 +10,8 @@ import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
     styleUrls: ['./products-list.component.scss']
 })
 export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
-    products: Product[];
-    filteredProducts: Product[];
+    products: ShoppingListProduct[];
+    filteredProducts: ShoppingListProduct[];
     private searchSub: Subscription;
 
     @Input()
@@ -23,8 +23,14 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
     @Input()
     enableSwipe = true;
 
+    @Input()
+    selectable = false;
+
+    @Input()
+    chosen: ShoppingListProduct[];
+
     @Output()
-    itemClicked: EventEmitter<Product> = new EventEmitter<Product>();
+    itemClicked: EventEmitter<ShoppingListProduct> = new EventEmitter<ShoppingListProduct>();
 
     @ViewChild('searchInput', { static: false }) searchInput: ElementRef;
 
@@ -32,7 +38,7 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.products = this.filteredProducts = this.productsService.getProducts();
+        this.products = this.filteredProducts = this.productsService.getProducts() as ShoppingListProduct[];
     }
 
     ngAfterViewInit(): void {
@@ -54,7 +60,7 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
 
     addProduct() {
         this.productsService.addProduct(
-            { id: 100, name: 'Test', departmentId: 12, unit: null }
+            { id: 100, name: 'Test', departmentId: 12, unitId: null }
         );
     }
 
@@ -66,5 +72,14 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
     clearSearch() {
         this.searchInput.nativeElement.value = null;
         this.searchInputChange(null);
+    }
+
+    markItemChange(item: ShoppingListProduct, checked: boolean) {
+        item.mark = checked;
+        if (checked) {
+            this.itemClicked.emit(item);
+        } else {
+            this.chosen.splice(this.chosen.indexOf(item), 1);
+        }
     }
 }

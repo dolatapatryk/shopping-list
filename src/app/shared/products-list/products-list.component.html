@@ -10,14 +10,23 @@
     </mat-form-field>
 </ng-template>
 <app-touch-list-layout [items]="filteredProducts" [addButtonVisible]="addButtonVisible" [enableSwipe]="enableSwipe"
-                       (itemClicked)="itemClicked.emit($event)"
                        (addButtonClicked)="addProduct()">
     <ng-template let-item="item" let-index="index">
-        <div class="d-flex flex-column w-100 p-1">
-            <span>{{index + 1}}. {{item.name}}</span>
-            <div class="d-flex product-info">
-                <span class="text-truncate">{{item.departmentId | departmentName}}</span>
-                <span class="ml-auto hide-on-swipe">{{item.unit}}</span>
+        <div class="d-flex">
+            <ng-template [ngIf]="selectable">
+                <div class="d-flex align-items-center pr-2">
+                    <mat-checkbox class="product-checkbox" [ngModel]="item.mark" (change)="markItemChange(item, $event.checked)"></mat-checkbox>
+                </div>
+            </ng-template>
+            <div class="d-flex flex-column w-100 p-1" (click)="itemClicked.emit(item)">
+                <span>{{index + 1}}. {{item.name}}</span>
+                <div class="d-flex product-info">
+                    <span class="text-truncate">{{item.departmentId | departmentName}}</span>
+                    <div class="ml-auto">
+                        <span *ngIf="selectable && item.mark" class="pr-1">{{item.quantity}}</span>
+                        <span class="hide-on-swipe">{{item.unitId | unitName}}</span>
+                    </div>
+                </div>
             </div>
         </div>
     </ng-template>

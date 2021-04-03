@@ -2,9 +2,10 @@ export interface Product {
     id: number;
     name: string;
     departmentId: number;
-    unit: string;
+    unitId: number;
 }
 
 export interface ShoppingListProduct extends Product {
     mark?: boolean;
+    quantity?: number;
 }

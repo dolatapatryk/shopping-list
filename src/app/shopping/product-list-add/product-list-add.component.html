@@ -1,3 +1,20 @@
-<div>
-    product list add
-</div>
+<app-dialog-layout>
+    <dialog-title>
+        <span>Dodaj produkt do listy</span>
+    </dialog-title>
+    <dialog-content>
+        <span class="pb-2">{{product.name}}</span>
+        <div>
+            <label for="quantity">Ilość</label>
+            <mat-form-field class="w-100">
+                <input [(ngModel)]="product.quantity" id="quantity" type="number" matInput autocomplete="off"/>
+                <span matSuffix>{{product.unitId | unitName}}</span>
+            </mat-form-field>
+        </div>
+    </dialog-content>
+    <dialog-footer>
+        <div class="d-flex">
+            <button mat-raised-button class="ml-auto" (click)="addItem()">Dodaj</button>
+        </div>
+    </dialog-footer>
+</app-dialog-layout>

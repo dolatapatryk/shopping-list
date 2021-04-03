@@ -7,6 +7,10 @@ import { TouchListLayoutComponent } from './touch-list-layout/touch-list-layout.
 import { SwipeAngularListModule } from 'swipe-angular-list';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductsListComponent } from './products-list/products-list.component';
+import { DialogLayoutComponent } from './dialog-layout/dialog-layout.component';
+import { UnitNamePipe } from './pipes/unit-name.pipe';
+import { FormsModule } from '@angular/forms';
+import { IsProductChosenPipe } from './pipes/is-product-chosen.pipe';
 
 
 @NgModule({
@@ -15,7 +19,10 @@ import { ProductsListComponent } from './products-list/products-list.component';
         ListLayoutComponent,
         DepartmentNamePipe,
         TouchListLayoutComponent,
-        ProductsListComponent
+        ProductsListComponent,
+        DialogLayoutComponent,
+        UnitNamePipe,
+        IsProductChosenPipe
     ],
     exports: [
         ListLayoutComponent,
@@ -23,15 +30,17 @@ import { ProductsListComponent } from './products-list/products-list.component';
         DepartmentNamePipe,
         TouchListLayoutComponent,
         FontAwesomeModule,
-        ProductsListComponent
+        ProductsListComponent,
+        DialogLayoutComponent,
+        UnitNamePipe
     ],
     imports: [
         CommonModule,
         MaterialModule,
         SwipeAngularListModule,
-        FontAwesomeModule
-    ],
-    providers: []
+        FontAwesomeModule,
+        FormsModule
+    ]
 })
 export class SharedModule {
 }

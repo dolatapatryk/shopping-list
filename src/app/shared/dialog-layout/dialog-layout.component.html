@@ -1,0 +1,24 @@
+<div class="mat-elevation-z8 rounded dialog-layout d-flex flex-column">
+    <div class="d-flex p-1 flex-row dialog-header">
+        <div class="dialog-title">
+            <h2 mat-dialog-title class="d-flex m-0">
+                <ng-content select="dialog-title"></ng-content>
+            </h2>
+        </div>
+        <div class="close ml-auto p-1" (click)="close()">
+            <fa-icon icon="times"></fa-icon>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="dialog-content p-2 h-100">
+        <ng-content select="dialog-content"></ng-content>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="rounded-bottom dialog-footer mt-auto">
+        <div class="p-2">
+            <ng-content select="dialog-footer"></ng-content>
+        </div>
+    </div>
+</div>
+
+
