@@ -1,6 +1,6 @@
 <ng-template [ngIf]="searchable">
     <mat-form-field appearance="outline" class="w-100 pb-2">
-        <input #searchInput matInput placeholder="Szukaj..."/>
+        <input autocomplete="off" #searchInput matInput type="search" placeholder="Szukaj..."/>
         <div matPrefix>
             <mat-icon>search</mat-icon>
         </div>
@@ -9,7 +9,8 @@
         </button>
     </mat-form-field>
 </ng-template>
-<app-touch-list-layout [items]="filteredProducts" [addButtonVisible]="addButtonVisible"
+<app-touch-list-layout [items]="filteredProducts" [addButtonVisible]="addButtonVisible" [enableSwipe]="enableSwipe"
+                       (itemClicked)="itemClicked.emit($event)"
                        (addButtonClicked)="addProduct()">
     <ng-template let-item="item" let-index="index">
         <div class="d-flex flex-column w-100 p-1">

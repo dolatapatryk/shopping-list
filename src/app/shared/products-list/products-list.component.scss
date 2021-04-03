@@ -3,7 +3,7 @@ div.product-info {
     font-size: 0.8rem;
 }
 
-:host ::ng-deep div.list-swipe.left-swipe div.product-info {
+:host ::ng-deep div.swipe-enabled div.list-swipe.left-swipe div.product-info {
     flex-direction: row-reverse;
 }
 

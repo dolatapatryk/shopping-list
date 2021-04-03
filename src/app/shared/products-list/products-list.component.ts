@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductsService } from '../../services/products.service';
 import { fromEvent, Subscription } from 'rxjs';
@@ -20,6 +20,12 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
     @Input()
     addButtonVisible = true;
 
+    @Input()
+    enableSwipe = true;
+
+    @Output()
+    itemClicked: EventEmitter<Product> = new EventEmitter<Product>();
+
     @ViewChild('searchInput', { static: false }) searchInput: ElementRef;
 
     constructor(private productsService: ProductsService) {
@@ -33,7 +39,7 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
         if (this.searchInput) {
             this.searchSub = fromEvent(this.searchInput.nativeElement, 'keyup')
                 .pipe(
-                    debounceTime(500),
+                    debounceTime(100),
                     distinctUntilChanged(),
                     tap(() => this.searchInputChange(this.searchInput.nativeElement.value))
                 ).subscribe();

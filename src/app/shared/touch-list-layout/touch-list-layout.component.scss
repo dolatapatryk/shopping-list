@@ -51,6 +51,9 @@
 
 :host ::ng-deep div.list-swipe.left-swipe {
     transform: none !important;
+}
+
+:host ::ng-deep div.swipe-enabled div.list-swipe.left-swipe {
     text-align: end;
 }
 
@@ -58,8 +61,16 @@
     font-size: 1.1rem;
 }
 
-:host ::ng-deep div.list-swipe.left-swipe .hide-on-swipe {
+:host ::ng-deep div.swipe-enabled div.list-swipe.left-swipe .hide-on-swipe {
     display: none;
+}
+
+:host ::ng-deep div.swipe-disabled div.options-btn {
+    display: none !important;
+}
+
+:host ::ng-deep div.swipe-disabled .left-swipe {
+    box-shadow: 0 5px 7px rgb(181 181 181 / 18%);
 }
 
 

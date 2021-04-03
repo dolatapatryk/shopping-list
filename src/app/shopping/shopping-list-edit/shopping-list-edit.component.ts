@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ShoppingListsService } from '../../services/shopping-lists.service';
 import { Product } from '../../models/product';
 import { ProductsService } from '../../services/products.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductListAddComponent } from '../product-list-add/product-list-add.component';
 
 @Component({
     selector: 'app-shopping-list-edit',
@@ -16,7 +18,8 @@ export class ShoppingListEditComponent implements OnInit {
         private shoppingListsService: ShoppingListsService,
         private router: Router,
         private route: ActivatedRoute,
-        private productsService: ProductsService
+        private productsService: ProductsService,
+        private dialog: MatDialog
     ) {
     }
 
@@ -26,5 +29,13 @@ export class ShoppingListEditComponent implements OnInit {
 
     back() {
         this.router.navigate(['../'], { relativeTo: this.route });
+    }
+
+    addItemToList(item: Product) {
+        console.log(':::item to list', item);
+        this.dialog.open(ProductListAddComponent, {
+            height: 'auto',
+            width: 'auto'
+        });
     }
 }

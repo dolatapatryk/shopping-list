@@ -18,6 +18,12 @@ export class TouchListLayoutComponent implements OnInit {
     @Output()
     addButtonClicked: EventEmitter<any> = new EventEmitter<any>();
 
+    @Input()
+    enableSwipe = true;
+
+    @Output()
+    itemClicked: EventEmitter<any> = new EventEmitter<any>();
+
     constructor() {
     }
 
@@ -26,5 +32,14 @@ export class TouchListLayoutComponent implements OnInit {
 
     swipeCallback($event: any) {
         console.log(':::event', $event);
+    }
+
+    markChange(item: any) {
+        console.log(':::item', item);
+    }
+
+    markItem(item: any, mark: boolean) {
+        item.mark = mark;
+        console.log(':::item', item);
     }
 }

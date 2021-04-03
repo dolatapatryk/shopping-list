@@ -4,3 +4,7 @@ export interface Product {
     departmentId: number;
     unit: string;
 }
+
+export interface ShoppingListProduct extends Product {
+    mark?: boolean;
+}
