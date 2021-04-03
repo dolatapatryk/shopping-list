@@ -1,0 +1,29 @@
+<app-dialog-layout>
+    <dialog-title>
+        <span>Zapisz listę zakupów</span>
+    </dialog-title>
+    <dialog-content>
+        <form role="form" #form="ngForm">
+            <div class="form-group">
+                <label for="name">Nazwa</label>
+                <mat-form-field class="w-100">
+                    <input autocomplete="off" required id="name" name="name" matInput
+                           [(ngModel)]="shoppingList.name"/>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <label for="description">Opis</label>
+                <mat-form-field class="w-100">
+                    <input autocomplete="off" id="description" name="description" matInput
+                           [(ngModel)]="shoppingList.description"/>
+                </mat-form-field>
+            </div>
+        </form>
+    </dialog-content>
+    <dialog-footer>
+        <div class="d-flex">
+            <button type="submit" mat-raised-button class="ml-auto" [disabled]="form.invalid"
+                    (click)="save()">Zapisz</button>
+        </div>
+    </dialog-footer>
+</app-dialog-layout>

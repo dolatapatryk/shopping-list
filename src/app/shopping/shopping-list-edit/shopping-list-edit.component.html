@@ -8,7 +8,8 @@
         <span>Wybrano: {{chosenProducts.length}}</span>
         <div class="action-buttons w-100 d-flex pt-1">
             <button mat-raised-button (click)="back()">Anuluj</button>
-            <button mat-raised-button class="ml-auto">Zapisz</button>
+            <button mat-raised-button class="ml-auto" [disabled]="!chosenProducts.length"
+                    (click)="save()">Zapisz</button>
         </div>
     </div>
 </div>

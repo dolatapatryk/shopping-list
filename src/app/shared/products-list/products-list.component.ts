@@ -56,6 +56,7 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
         if (this.searchSub) {
             this.searchSub.unsubscribe();
         }
+        this.resetProducts();
     }
 
     addProduct() {
@@ -82,5 +83,12 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
             item.quantity = null;
             this.chosen.splice(this.chosen.indexOf(item), 1);
         }
+    }
+
+    resetProducts() {
+        this.products.forEach(p => {
+            p.quantity = null;
+            p.mark = false;
+        });
     }
 }

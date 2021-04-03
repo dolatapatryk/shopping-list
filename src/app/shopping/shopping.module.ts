@@ -7,10 +7,11 @@ import { SharedModule } from '../shared/shared.module';
 import { ShoppingListEditComponent } from './shopping-list-edit/shopping-list-edit.component';
 import { ProductListAddComponent } from './product-list-add/product-list-add.component';
 import { FormsModule } from '@angular/forms';
+import { ShoppingListSaveComponent } from './shopping-list-save/shopping-list-save.component';
 
 
 @NgModule({
-    declarations: [ShoppingListsComponent, ShoppingListEditComponent, ProductListAddComponent],
+    declarations: [ShoppingListsComponent, ShoppingListEditComponent, ProductListAddComponent, ShoppingListSaveComponent],
     imports: [
         CommonModule,
         ShoppingRoutingModule,

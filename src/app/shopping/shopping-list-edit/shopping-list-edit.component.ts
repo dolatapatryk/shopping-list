@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ShoppingListsService } from '../../services/shopping-lists.service';
 import { ShoppingListProduct } from '../../models/product';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductListAddComponent } from '../product-list-add/product-list-add.component';
+import { ShoppingListSaveComponent } from '../shopping-list-save/shopping-list-save.component';
 
 @Component({
     selector: 'app-shopping-list-edit',
@@ -14,7 +14,6 @@ export class ShoppingListEditComponent {
     chosenProducts: ShoppingListProduct[] = [];
 
     constructor(
-        private shoppingListsService: ShoppingListsService,
         private router: Router,
         private route: ActivatedRoute,
         private dialog: MatDialog
@@ -42,6 +41,13 @@ export class ShoppingListEditComponent {
                     item.mark = false;
                 }
             }
+        });
+    }
+
+    save() {
+        this.dialog.open(ShoppingListSaveComponent, {
+            minWidth: '300px',
+            data: { products: this.chosenProducts }
         });
     }
 }

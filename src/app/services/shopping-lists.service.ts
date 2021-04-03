@@ -17,4 +17,8 @@ export class ShoppingListsService {
     getShoppingLists(): ShoppingList[] {
         return this.shoppingLists;
     }
+
+    addShoppingList(list: ShoppingList) {
+        this.shoppingLists.push(list);
+    }
 }
