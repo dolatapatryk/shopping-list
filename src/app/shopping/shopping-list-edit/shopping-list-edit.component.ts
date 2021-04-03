@@ -10,7 +10,7 @@ import { ProductListAddComponent } from '../product-list-add/product-list-add.co
     templateUrl: './shopping-list-edit.component.html',
     styleUrls: ['./shopping-list-edit.component.scss']
 })
-export class ShoppingListEditComponent implements OnInit {
+export class ShoppingListEditComponent {
     chosenProducts: ShoppingListProduct[] = [];
 
     constructor(
@@ -19,9 +19,6 @@ export class ShoppingListEditComponent implements OnInit {
         private route: ActivatedRoute,
         private dialog: MatDialog
     ) {
-    }
-
-    ngOnInit(): void {
     }
 
     back() {

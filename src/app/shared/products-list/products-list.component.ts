@@ -79,6 +79,7 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
         if (checked) {
             this.itemClicked.emit(item);
         } else {
+            item.quantity = null;
             this.chosen.splice(this.chosen.indexOf(item), 1);
         }
     }
