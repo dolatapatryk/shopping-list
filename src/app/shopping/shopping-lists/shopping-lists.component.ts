@@ -25,4 +25,8 @@ export class ShoppingListsComponent implements OnInit {
     navigateToAddShoppingList() {
         this.router.navigate(['add'], { relativeTo: this.route });
     }
+
+    goToList(list: ShoppingList) {
+        this.router.navigate([list.id], { relativeTo: this.route });
+    }
 }

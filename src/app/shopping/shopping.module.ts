@@ -8,17 +8,26 @@ import { ShoppingListEditComponent } from './shopping-list-edit/shopping-list-ed
 import { ProductListAddComponent } from './product-list-add/product-list-add.component';
 import { FormsModule } from '@angular/forms';
 import { ShoppingListSaveComponent } from './shopping-list-save/shopping-list-save.component';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { ShoppingListResolver } from './shopping-list/shopping-list.resolver';
 
 
 @NgModule({
-    declarations: [ShoppingListsComponent, ShoppingListEditComponent, ProductListAddComponent, ShoppingListSaveComponent],
+    declarations: [
+        ShoppingListsComponent,
+        ShoppingListEditComponent,
+        ProductListAddComponent,
+        ShoppingListSaveComponent,
+        ShoppingListComponent
+    ],
     imports: [
         CommonModule,
         ShoppingRoutingModule,
         SharedModule,
         FormsModule
     ],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    providers: [ShoppingListResolver]
 })
 export class ShoppingModule {
 }

@@ -1,0 +1,13 @@
+div.product-info {
+    color: grey;
+    font-size: 0.8rem;
+}
+
+:host ::ng-deep div.mat-form-field-wrapper {
+    margin: 0;
+    padding: 0;
+}
+
+.product-checkbox {
+    transform: scale(1.3);
+}
