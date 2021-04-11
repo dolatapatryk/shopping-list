@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ShoppingList } from '../../models/shopping-list';
 import { ShoppingListsService } from '../../services/shopping-lists.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
     selector: 'app-shopping-lists',
@@ -14,7 +16,8 @@ export class ShoppingListsComponent implements OnInit {
     constructor(
         private shoppingListsService: ShoppingListsService,
         private router: Router,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private dialog: MatDialog
     ) {
     }
 
@@ -28,5 +31,16 @@ export class ShoppingListsComponent implements OnInit {
 
     goToList(list: ShoppingList) {
         this.router.navigate([list.id], { relativeTo: this.route });
+    }
+
+    deleteShoppingList(list: ShoppingList) {
+        this.dialog.open(ConfirmationDialogComponent, {
+            minWidth: '300px',
+            data: {
+                title: 'Usuń listę zakupów',
+                message: `Czy jesteś pewien, że chcesz usunąć listę: ${list.name}`,
+                action: () => this.shoppingListsService.deleteShoppingList(list)
+            }
+        });
     }
 }

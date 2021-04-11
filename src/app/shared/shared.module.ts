@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListLayoutComponent } from './list-layout/list-layout.component';
 import { MaterialModule } from '../material/material.module';
@@ -11,6 +11,7 @@ import { DialogLayoutComponent } from './dialog-layout/dialog-layout.component';
 import { UnitNamePipe } from './pipes/unit-name.pipe';
 import { FormsModule } from '@angular/forms';
 import { IsProductChosenPipe } from './pipes/is-product-chosen.pipe';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { IsProductChosenPipe } from './pipes/is-product-chosen.pipe';
         ProductsListComponent,
         DialogLayoutComponent,
         UnitNamePipe,
-        IsProductChosenPipe
+        IsProductChosenPipe,
+        ConfirmationDialogComponent
     ],
     exports: [
         ListLayoutComponent,
@@ -40,7 +42,8 @@ import { IsProductChosenPipe } from './pipes/is-product-chosen.pipe';
         SwipeAngularListModule,
         FontAwesomeModule,
         FormsModule
-    ]
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SharedModule {
 }

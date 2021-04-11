@@ -24,7 +24,17 @@ export class TouchListLayoutComponent {
     @Output()
     itemClicked: EventEmitter<any> = new EventEmitter<any>();
 
-    swipeCallback($event: any) {
-        console.log(':::event', $event);
+    @Output()
+    editClicked: EventEmitter<any> = new EventEmitter<any>();
+
+    @Output()
+    deleteClicked: EventEmitter<any> = new EventEmitter<any>();
+
+    actionClicked(item: any, action: 'edit' | 'trash') {
+        if (action === 'edit') {
+            this.editClicked.emit(item);
+        } else {
+            this.deleteClicked.emit(item);
+        }
     }
 }

@@ -1,0 +1,14 @@
+<app-dialog-layout>
+    <dialog-title>
+        <span>{{title}}</span>
+    </dialog-title>
+    <dialog-content>
+        {{message}}
+    </dialog-content>
+    <dialog-footer>
+        <div class="d-flex">
+            <button type="button" (click)="close()" mat-raised-button>Anuluj</button>
+            <button type="button" (click)="submit()" mat-raised-button class="ml-auto btn-danger">Potwierdź</button>
+        </div>
+    </dialog-footer>
+</app-dialog-layout>

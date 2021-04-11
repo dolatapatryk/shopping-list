@@ -1,11 +1,13 @@
 <div class="h-100">
     <div class="d-flex flex-column h-100">
         <div class="swipe-list" [ngClass]="enableSwipe ? 'swipe-enabled' : 'swipe-disabled'">
-            <sw-item-list *ngFor="let item of items; let i = index" (click)="itemClicked.emit(item)"
+            <sw-item-list *ngFor="let item of items; let i = index" (callback)="actionClicked(item, $event.action)"
                           [inside]="item" [customTemplate]="customTemplateSrc" matRipple
                           [editTemplate]="editTemplate" [trashTemplate]="trashTemplate">
                 <ng-template #customTemplateSrc>
-                    <ng-container *ngTemplateOutlet="listItemTemplate; context: {item: item, index: i}"></ng-container>
+                    <div (click)="itemClicked.emit(item)">
+                        <ng-container *ngTemplateOutlet="listItemTemplate; context: {item: item, index: i}"></ng-container>
+                    </div>
                 </ng-template>
 
                 <ng-template #editTemplate>
