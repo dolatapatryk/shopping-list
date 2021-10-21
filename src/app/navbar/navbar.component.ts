@@ -12,9 +12,9 @@ export interface NavbarItem {
 })
 export class NavbarComponent {
     items: NavbarItem[] = [
-        {routerLink: '/shopping', itemName: 'Zakupy'},
-        {routerLink: '/departments', itemName: 'Działy'},
-        {routerLink: '/products', itemName: 'Produkty'}
+        { routerLink: '/shopping', itemName: 'Zakupy' },
+        { routerLink: '/departments', itemName: 'Działy' },
+        { routerLink: '/products', itemName: 'Produkty' }
     ];
 
     @Output()

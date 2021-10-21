@@ -3,6 +3,8 @@ import { ShoppingListProduct } from '../../models/product';
 import { ProductsService } from '../../services/products.service';
 import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductSaveComponent } from '../product-save/product-save.component';
 
 @Component({
     selector: 'app-products-list',
@@ -34,7 +36,7 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
 
     @ViewChild('searchInput', { static: false }) searchInput: ElementRef;
 
-    constructor(private productsService: ProductsService) {
+    constructor(private productsService: ProductsService, private dialog: MatDialog) {
     }
 
     ngOnInit(): void {
@@ -60,9 +62,10 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     addProduct() {
-        this.productsService.addProduct(
-            { id: 100, name: 'Test', departmentId: 12, unitId: null }
-        );
+        this.dialog.open(ProductSaveComponent, {
+            minWidth: '300px',
+            data: { product: null }
+        });
     }
 
     searchInputChange(value: string) {

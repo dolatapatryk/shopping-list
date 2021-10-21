@@ -12,6 +12,7 @@ import { UnitNamePipe } from './pipes/unit-name.pipe';
 import { FormsModule } from '@angular/forms';
 import { IsProductChosenPipe } from './pipes/is-product-chosen.pipe';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { ProductSaveComponent } from './product-save/product-save.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
         DialogLayoutComponent,
         UnitNamePipe,
         IsProductChosenPipe,
-        ConfirmationDialogComponent
+        ConfirmationDialogComponent,
+        ProductSaveComponent
     ],
     exports: [
         ListLayoutComponent,
