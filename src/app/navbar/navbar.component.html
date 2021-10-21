@@ -3,17 +3,16 @@
         <button mat-icon-button (click)="toggleSidenav.emit()">
             <mat-icon>menu</mat-icon>
         </button>
-        <a class="nav-item nav-link" routerLink="/shopping" routerLinkActive="active">Zakupy</a>
-        <a class="nav-item nav-link" routerLink="/departments" routerLinkActive="active">Działy</a>
-        <a class="nav-item nav-link" routerLink="/products" routerLinkActive="active">Produkty</a>
-<!--        <div class="d-flex justify-content-end w-100">-->
-<!--            <ul class="d-flex">-->
-<!--                <li>-->
-<!--                    <button mat-icon-button>-->
-<!--                        <mat-icon>settings</mat-icon>-->
-<!--                    </button>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </div>-->
+        <a *ngFor="let item of items" class="nav-item nav-link" (click)="closeSidenav.emit()"
+           [routerLink]="item.routerLink" routerLinkActive="active">{{item.itemName}}</a>
+        <!--        <div class="d-flex justify-content-end w-100">-->
+        <!--            <ul class="d-flex">-->
+        <!--                <li>-->
+        <!--                    <button mat-icon-button>-->
+        <!--                        <mat-icon>settings</mat-icon>-->
+        <!--                    </button>-->
+        <!--                </li>-->
+        <!--            </ul>-->
+        <!--        </div>-->
     </div>
 </mat-toolbar>

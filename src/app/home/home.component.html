@@ -1,4 +1,4 @@
-<app-navbar (toggleSidenav)="navigationSidenav.toggle()"></app-navbar>
+<app-navbar (toggleSidenav)="navigationSidenav.toggle()" (closeSidenav)="navigationSidenav.close()"></app-navbar>
 <mat-sidenav-container class="sidenav-container" autosize>
     <mat-sidenav #navigationSidenav mode="over" role="navigation">
         <mat-nav-list>
