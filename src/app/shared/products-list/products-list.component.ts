@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
-import { ShoppingListProduct } from '../../models/product';
-import { ProductsService } from '../../services/products.service';
+import { Product, ShoppingListProduct } from '../../models/product';
+import { ProductService } from '../../services/product.service';
 import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
@@ -36,11 +36,11 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
 
     @ViewChild('searchInput', { static: false }) searchInput: ElementRef;
 
-    constructor(private productsService: ProductsService, private dialog: MatDialog) {
+    constructor(private productService: ProductService, private dialog: MatDialog) {
     }
 
     ngOnInit(): void {
-        this.products = this.filteredProducts = this.productsService.getProducts() as ShoppingListProduct[];
+        this.products = this.filteredProducts = this.productService.getProducts() as ShoppingListProduct[];
     }
 
     ngAfterViewInit(): void {
@@ -62,10 +62,22 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     addProduct() {
+        this.openProductSaveDialog(null);
+    }
+
+    editProduct(productToEdit: Product) {
+        this.openProductSaveDialog(productToEdit);
+    }
+
+    private openProductSaveDialog(product: Product) {
         this.dialog.open(ProductSaveComponent, {
             minWidth: '300px',
-            data: { product: null }
+            data: { product }
         });
+    }
+
+    deleteProduct(productToDelete: Product) {
+        this.productService.deleteProduct(productToDelete.id);
     }
 
     searchInputChange(value: string) {

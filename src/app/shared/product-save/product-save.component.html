@@ -13,14 +13,33 @@
             </div>
             <div class="form-group">
                 <label for="department">Dział</label>
-                <mat-form-field class="w-100">
-                    <mat-select class="w-100" id="department" [(value)]="product.departmentId">
-                        <mat-option *ngFor="let department of departments" [value]="department.id">
+                <div class="w-100">
+                    <ng-select [(ngModel)]="product.departmentId" required
+                               name="department" id="department">
+                        <ng-option *ngFor="let department of departments" [value]="department.id">
                             {{department.name}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+                        </ng-option>
+                    </ng-select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="unit">Jednostka</label>
+                <div class="w-100">
+                    <ng-select [(ngModel)]="product.unitId" required
+                               name="unit" id="unit">
+                        <ng-option *ngFor="let unit of units" [value]="unit.id">
+                            {{unit.name}}
+                        </ng-option>
+                    </ng-select>
+                </div>
             </div>
         </form>
     </dialog-content>
+    <dialog-footer>
+        <div class="d-flex">
+            <button type="submit" mat-raised-button class="ml-auto" [disabled]="form.invalid"
+                    (click)="save()">Zapisz
+            </button>
+        </div>
+    </dialog-footer>
 </app-dialog-layout>

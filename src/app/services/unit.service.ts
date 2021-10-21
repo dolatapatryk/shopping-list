@@ -5,7 +5,7 @@ import units from '../../assets/units.json';
 @Injectable({
     providedIn: 'root'
 })
-export class UnitsService {
+export class UnitService {
 
     constructor() {
         console.log(':::units service constructor');

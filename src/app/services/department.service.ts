@@ -5,7 +5,7 @@ import departments from '../../assets/departments.json';
 @Injectable({
     providedIn: 'root'
 })
-export class DepartmentsService {
+export class DepartmentService {
 
     constructor() {
         console.log(':::departmests service constructor');

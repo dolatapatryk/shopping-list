@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DepartmentsService } from '../../services/departments.service';
+import { DepartmentService } from '../../services/department.service';
 import { Department } from '../../models/department';
 
 @Component({
@@ -10,14 +10,14 @@ import { Department } from '../../models/department';
 export class DepartmentsListComponent implements OnInit {
     departments: Department[];
 
-    constructor(private departmentsService: DepartmentsService) {
+    constructor(private departmentService: DepartmentService) {
     }
 
     ngOnInit(): void {
-        this.departments = this.departmentsService.getDepartments();
+        this.departments = this.departmentService.getDepartments();
     }
 
     addDepartment() {
-        this.departmentsService.addDepartment({ id: 20, name: 'Test' });
+        this.departmentService.addDepartment({ id: 20, name: 'Test' });
     }
 }

@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { IsProductChosenPipe } from './pipes/is-product-chosen.pipe';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { ProductSaveComponent } from './product-save/product-save.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { ProductSaveComponent } from './product-save/product-save.component';
         MaterialModule,
         SwipeAngularListModule,
         FontAwesomeModule,
-        FormsModule
+        FormsModule,
+        NgSelectModule
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

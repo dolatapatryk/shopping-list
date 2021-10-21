@@ -10,7 +10,8 @@
     </mat-form-field>
 </ng-template>
 <app-touch-list-layout [items]="filteredProducts" [addButtonVisible]="addButtonVisible" [enableSwipe]="enableSwipe"
-                       (addButtonClicked)="addProduct()">
+                       (addButtonClicked)="addProduct()" (editClicked)="editProduct($event)"
+                       (deleteClicked)="deleteProduct($event)">
     <ng-template let-item="item" let-index="index">
         <div class="d-flex">
             <ng-template [ngIf]="selectable">

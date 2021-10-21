@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DepartmentsService } from '../../services/departments.service';
+import { DepartmentService } from '../../services/department.service';
 import { Department } from '../../models/department';
 
 @Pipe({
@@ -8,8 +8,8 @@ import { Department } from '../../models/department';
 export class DepartmentNamePipe implements PipeTransform {
     departments: Department[];
 
-    constructor(private departmentsService: DepartmentsService) {
-        this.departments = departmentsService.getDepartments();
+    constructor(private departmentService: DepartmentService) {
+        this.departments = departmentService.getDepartments();
     }
 
     transform(departmentId: number): string {

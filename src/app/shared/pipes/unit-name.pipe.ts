@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Unit } from '../../models/unit';
-import { UnitsService } from '../../services/units.service';
+import { UnitService } from '../../services/unit.service';
 
 @Pipe({
     name: 'unitName'
@@ -8,7 +8,7 @@ import { UnitsService } from '../../services/units.service';
 export class UnitNamePipe implements PipeTransform {
     units: Unit[];
 
-    constructor(private unitService: UnitsService) {
+    constructor(private unitService: UnitService) {
         this.units = unitService.getUnits();
     }
 
