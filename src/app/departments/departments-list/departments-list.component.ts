@@ -14,10 +14,11 @@ export class DepartmentsListComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.departments = this.departmentService.getDepartments();
+        this.departmentService.getDepartments().subscribe(body => this.departments = body);
     }
 
     addDepartment() {
-        this.departmentService.addDepartment({ id: 20, name: 'Test' });
+        this.departmentService.addDepartment({ id: null, name: 'Test' })
+            .subscribe(resp => console.log(':::resp', resp));
     }
 }

@@ -5,6 +5,8 @@ import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductSaveComponent } from '../product-save/product-save.component';
+import { DepartmentService } from '../../services/department.service';
+import { Department } from '../../models/department';
 
 @Component({
     selector: 'app-products-list',
@@ -14,6 +16,7 @@ import { ProductSaveComponent } from '../product-save/product-save.component';
 export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
     products: ShoppingListProduct[];
     filteredProducts: ShoppingListProduct[];
+    departments: Department[];
     private searchSub: Subscription;
 
     @Input()
@@ -36,11 +39,14 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
 
     @ViewChild('searchInput', { static: false }) searchInput: ElementRef;
 
-    constructor(private productService: ProductService, private dialog: MatDialog) {
+    constructor(private productService: ProductService, private departmentsService: DepartmentService, private dialog: MatDialog) {
     }
 
     ngOnInit(): void {
-        this.products = this.filteredProducts = this.productService.getProducts() as ShoppingListProduct[];
+        this.productService.getProducts().subscribe(body => {
+            this.products = this.filteredProducts = body as ShoppingListProduct[];
+        });
+        this.departmentsService.getDepartments().subscribe(body => this.departments = body);
     }
 
     ngAfterViewInit(): void {

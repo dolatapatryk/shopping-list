@@ -13,6 +13,7 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
         ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
         BrowserAnimationsModule,
         MaterialModule,
-        HammerModule
+        HammerModule,
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent]

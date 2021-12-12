@@ -28,7 +28,7 @@ export class ProductSaveComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.departments = this.departmentService.getDepartments();
+        this.departmentService.getDepartments().subscribe(body => this.departments = body);
         this.units = this.unitService.getUnits();
     }
 

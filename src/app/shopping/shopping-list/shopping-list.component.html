@@ -10,7 +10,7 @@
                     <div class="d-flex flex-column w-100 p-1">
                         <span>{{index + 1}}. {{item.name}}</span>
                         <div class="d-flex product-info">
-                            <span class="text-truncate">{{item.departmentId | departmentName}}</span>
+                            <span class="text-truncate">{{item.departmentId | departmentName:departments}}</span>
                             <div class="ml-auto">
                                 <span class="pr-1">{{item.quantity}}</span>
                                 <span class="hide-on-swipe">{{item.unitId | unitName}}</span>
