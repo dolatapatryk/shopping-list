@@ -23,7 +23,7 @@ export class DepartmentService {
     }
 
     addDepartment(department: Department): Observable<any> {
-        return this.http.post(this.url, { name: department.name }).pipe(
+        return this.http.post(this.url, { value: department.name }).pipe(
             tap(() => CacheableService.getInstance().invalidate(this.cacheKey))
         );
     }
