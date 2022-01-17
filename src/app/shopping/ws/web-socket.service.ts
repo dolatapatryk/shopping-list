@@ -3,7 +3,7 @@ import { CompatClient, Stomp } from '@stomp/stompjs';
 
 export class WebSocketService {
     private webSocketEndpoint = 'http://localhost:8090/ws';
-    private topic = '/topic/greetings';
+    private topic = '/topic/shopping-list-products';
     private stompClient: CompatClient;
 
     connect() {
@@ -14,7 +14,7 @@ export class WebSocketService {
             this.stompClient.subscribe(this.topic, event => {
                 this.onMessageReceived(event);
             });
-            this.send('ciekawe');
+            this.send(1);
         });
     }
 
@@ -26,7 +26,7 @@ export class WebSocketService {
     }
 
     send(message: any) {
-        this.stompClient.send('/app/hello', {}, JSON.stringify(message));
+        this.stompClient.send('/app/get-shopping-list-products', {}, JSON.stringify(message));
     }
 
     onMessageReceived(event: any) {

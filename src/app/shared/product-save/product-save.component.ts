@@ -33,6 +33,7 @@ export class ProductSaveComponent implements OnInit {
     }
 
     save() {
-        this.productService.saveProduct(this.product);
+        console.log('Save button clicked');
+        this.productService.saveProduct(this.product).subscribe(res => console.log(':::res', res));
     }
 }
