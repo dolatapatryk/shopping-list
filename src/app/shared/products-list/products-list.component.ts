@@ -71,14 +71,14 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     addProduct() {
-        this.openProductSaveDialog(null);
+        this.openProductSaveDialog();
     }
 
     editProduct(productToEdit: Product) {
         this.openProductSaveDialog(productToEdit);
     }
 
-    private openProductSaveDialog(product: Product) {
+    private openProductSaveDialog(product: Product = null) {
         const dialog = this.dialog.open(ProductSaveComponent, {
             minWidth: '300px',
             data: { product }
@@ -95,7 +95,7 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
             minWidth: '300px',
             data: {
                 title: 'Usuń produkt',
-                message: `Czy jesteś pewien, że chcesz usunąć produkt: ${productToDelete.name}`,
+                message: `Czy jesteś pewien, że chcesz usunąć produkt: ${productToDelete.name}?`,
                 action: () => this.productService.delete(productToDelete.id)
             }
         });

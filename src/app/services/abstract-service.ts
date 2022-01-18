@@ -42,7 +42,6 @@ export abstract class AbstractService<T extends Id, RBT> {
     }
 
     private invalidateCache(): OperatorFunction<any, any> {
-        console.log(':::Invalidate cache:', this.cacheKey);
         return tap(() => CacheableService.getInstance().invalidate(this.cacheKey));
     }
 }
