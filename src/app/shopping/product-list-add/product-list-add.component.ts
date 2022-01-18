@@ -15,7 +15,6 @@ export class ProductListAddComponent implements OnInit {
         private dialogRef: MatDialogRef<ProductListAddComponent>
     ) {
         this.product = this.data.product;
-        this.product.quantity = this.product.quantity || 1;
     }
 
     ngOnInit(): void {

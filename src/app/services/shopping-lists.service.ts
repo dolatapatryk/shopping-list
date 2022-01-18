@@ -1,45 +1,37 @@
 import { Injectable } from '@angular/core';
+import { Product } from '../models/product';
+import { AbstractService } from './abstract-service';
 import { ShoppingList } from '../models/shopping-list';
-import { ServiceHelper } from '../helpers/service.helper';
+import { HttpClient } from '@angular/common/http';
+import { Cacheable } from 'angular-cacheable';
+import { Observable } from 'rxjs';
 
-const LOCAL_STORAGE_KEY = 'shoppingLists';
+interface ShoppingListRequestBody {
+    name: string;
+    description?: string;
+    products: { product: Product, marked: boolean, quantity: string }[];
+}
 
 @Injectable({
     providedIn: 'root'
 })
-export class ShoppingListsService {
-    shoppingLists: ShoppingList[];
+export class ShoppingListsService extends AbstractService<ShoppingList, ShoppingListRequestBody> {
+    private static CACHE_KEY = 'get-shopping-lists';
+    private static URL = 'http://localhost:8090/api/shopping-lists';
 
-    constructor() {
-        console.log(':::shopping list constructor service');
-        const lists = localStorage.getItem(LOCAL_STORAGE_KEY);
-        this.shoppingLists = lists ? JSON.parse(lists) : [];
+    constructor(http: HttpClient) {
+        super(http, ShoppingListsService.URL, ShoppingListsService.CACHE_KEY);
     }
 
-    getShoppingLists(): ShoppingList[] {
-        return this.shoppingLists;
+    @Cacheable({ key: ShoppingListsService.CACHE_KEY })
+    findAll(): Observable<ShoppingList[]> {
+        return super.findAll();
     }
 
-    addShoppingList(list: ShoppingList) {
-        list.id = ServiceHelper.getNextId(this.shoppingLists);
-        const products = [];
-        list.products.forEach(p => products.push({ ...p, mark: false }));
-        list.products = products;
-        this.shoppingLists.push(list);
-        this.saveToLocalStorage();
-    }
-
-    getById(listId: number) {
-        return this.shoppingLists.find(l => l.id === listId);
-    }
-
-    deleteShoppingList(list: ShoppingList) {
-        const index = this.shoppingLists.findIndex(l => l.id === list.id);
-        this.shoppingLists.splice(index, 1);
-        this.saveToLocalStorage();
-    }
-
-    private saveToLocalStorage() {
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(this.shoppingLists));
+    protected getRequestBody(list: ShoppingList): ShoppingListRequestBody {
+        const products = list.products.map(p => {
+            return { product: p as Product, marked: p.mark, quantity: p.quantity };
+        });
+        return { name: list.name, description: list.description, products };
     }
 }

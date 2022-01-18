@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProductSaveComponent } from '../product-save/product-save.component';
 import { DepartmentService } from '../../services/department.service';
 import { Department } from '../../models/department';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
     selector: 'app-products-list',
@@ -43,10 +44,8 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.productService.getProducts().subscribe(body => {
-            this.products = this.filteredProducts = body as ShoppingListProduct[];
-        });
-        this.departmentsService.getDepartments().subscribe(body => this.departments = body);
+        this.getProducts();
+        this.departmentsService.findAll().subscribe(body => this.departments = body);
     }
 
     ngAfterViewInit(): void {
@@ -67,6 +66,10 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
         this.resetProducts();
     }
 
+    private getProducts() {
+        this.productService.findAll().subscribe(body => this.products = this.filteredProducts = body as ShoppingListProduct[]);
+    }
+
     addProduct() {
         this.openProductSaveDialog(null);
     }
@@ -76,14 +79,31 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     private openProductSaveDialog(product: Product) {
-        this.dialog.open(ProductSaveComponent, {
+        const dialog = this.dialog.open(ProductSaveComponent, {
             minWidth: '300px',
             data: { product }
+        });
+        dialog.afterClosed().subscribe(result => {
+            if (result) {
+                this.getProducts();
+            }
         });
     }
 
     deleteProduct(productToDelete: Product) {
-        this.productService.deleteProduct(productToDelete.id);
+        const dialog = this.dialog.open(ConfirmationDialogComponent, {
+            minWidth: '300px',
+            data: {
+                title: 'Usuń produkt',
+                message: `Czy jesteś pewien, że chcesz usunąć produkt: ${productToDelete.name}`,
+                action: () => this.productService.delete(productToDelete.id)
+            }
+        });
+        dialog.afterClosed().subscribe(result => {
+            if (result) {
+                this.getProducts();
+            }
+        });
     }
 
     searchInputChange(value: string) {

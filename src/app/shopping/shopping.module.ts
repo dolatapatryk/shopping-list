@@ -9,7 +9,6 @@ import { ProductListAddComponent } from './product-list-add/product-list-add.com
 import { FormsModule } from '@angular/forms';
 import { ShoppingListSaveComponent } from './shopping-list-save/shopping-list-save.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { ShoppingListResolver } from './shopping-list/shopping-list.resolver';
 
 
 @NgModule({
@@ -27,7 +26,7 @@ import { ShoppingListResolver } from './shopping-list/shopping-list.resolver';
         FormsModule
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [ShoppingListResolver]
+    providers: []
 })
 export class ShoppingModule {
 }

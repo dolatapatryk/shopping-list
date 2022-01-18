@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Department } from '../models/department';
 import { HttpClient } from '@angular/common/http';
-import { Observable, OperatorFunction } from 'rxjs';
-import { Cacheable, CacheableService } from 'angular-cacheable';
-import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Cacheable } from 'angular-cacheable';
+import { AbstractService } from './abstract-service';
 
 interface DepartmentRequestBody {
     value: string;
@@ -12,28 +12,20 @@ interface DepartmentRequestBody {
 @Injectable({
     providedIn: 'root'
 })
-export class DepartmentService {
+export class DepartmentService extends AbstractService<Department, DepartmentRequestBody> {
     private static CACHE_KEY = 'get-departments';
-    private url = 'http://localhost:8090/api/departments';
+    private static URL = 'http://localhost:8090/api/departments';
 
-    constructor(private http: HttpClient) {
+    constructor(http: HttpClient) {
+        super(http, DepartmentService.URL, DepartmentService.CACHE_KEY);
     }
 
     @Cacheable({ key: DepartmentService.CACHE_KEY })
-    getDepartments(): Observable<Department[]> {
-        return this.http.get<Department[]>(this.url);
+    findAll(): Observable<Department[]> {
+        return super.findAll();
     }
 
-    addDepartment(department: Department): Observable<any> {
-        return this.http.post(this.url, this.getRequestBody(department)).pipe(this.invalidateCache());
-    }
-
-    private getRequestBody(department: Department): DepartmentRequestBody {
+    protected getRequestBody(department: Department): DepartmentRequestBody {
         return { value: department.name };
-    }
-
-    private invalidateCache(): OperatorFunction<any, any> {
-        console.log('Invalidate departments cache');
-        return tap(() => CacheableService.getInstance().invalidate(DepartmentService.CACHE_KEY));
     }
 }

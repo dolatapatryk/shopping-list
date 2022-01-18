@@ -22,7 +22,7 @@ export class ShoppingListsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.lists = this.shoppingListsService.getShoppingLists();
+        this.shoppingListsService.findAll().subscribe(body => this.lists = body);
     }
 
     navigateToAddShoppingList() {
@@ -39,7 +39,7 @@ export class ShoppingListsComponent implements OnInit {
             data: {
                 title: 'Usuń listę zakupów',
                 message: `Czy jesteś pewien, że chcesz usunąć listę: ${list.name}`,
-                action: () => this.shoppingListsService.deleteShoppingList(list)
+                action: () => this.shoppingListsService.delete(list.id)
             }
         });
     }

@@ -1,5 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { HttpResponse } from '@angular/common/http';
+import { ToastService } from '../../services/toast-service';
 
 @Component({
     selector: 'app-confirmation-dialog',
@@ -9,23 +12,40 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class ConfirmationDialogComponent {
     title: string;
     message: string;
-    afterSubmitAction: any;
+    action: () => void | Observable<HttpResponse<any>>;
 
     constructor(
         @Inject(MAT_DIALOG_DATA) private data: any,
-        private dialogRef: MatDialogRef<ConfirmationDialogComponent>
+        private dialogRef: MatDialogRef<ConfirmationDialogComponent>,
+        private toastService: ToastService
     ) {
         this.title = this.data.title;
         this.message = this.data.message;
-        this.afterSubmitAction = this.data.action;
+        this.action = this.data.action;
     }
 
     submit() {
-        this.afterSubmitAction();
-        this.close();
+        const result = this.action();
+        if (result instanceof Observable) {
+            this.subscribeResult(result);
+        }
+        this.close(true);
     }
 
-    close() {
-        this.dialogRef.close();
+    private subscribeResult(result: Observable<HttpResponse<any>>) {
+        result.subscribe(
+            () => {
+                this.toastService.success();
+                this.close(true);
+            },
+            () => {
+                this.toastService.error();
+                this.close(false);
+            }
+        );
+    }
+
+    close(result = false) {
+        this.dialogRef.close(result);
     }
 }

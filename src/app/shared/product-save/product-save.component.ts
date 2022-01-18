@@ -4,6 +4,7 @@ import { Department } from '../../models/department';
 import { DepartmentService } from '../../services/department.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProductService } from '../../services/product.service';
+import { ToastService } from '../../services/toast-service';
 
 @Component({
     selector: 'app-product-save',
@@ -18,17 +19,23 @@ export class ProductSaveComponent implements OnInit {
         @Inject(MAT_DIALOG_DATA) private data: any,
         private dialogRef: MatDialogRef<ProductSaveComponent>,
         private productService: ProductService,
-        private departmentService: DepartmentService
+        private departmentService: DepartmentService,
+        private toastService: ToastService
     ) {
         this.product = { ...this.data.product } || { id: null, name: null, departmentId: null, unitId: null };
     }
 
     ngOnInit(): void {
-        this.departmentService.getDepartments().subscribe(body => this.departments = body);
+        this.departmentService.findAll().subscribe(body => this.departments = body);
     }
 
     save() {
-        console.log('Save button clicked');
-        this.productService.saveProduct(this.product).subscribe(res => console.log(':::res', res));
+        this.productService.save(this.product).subscribe(
+            () => {
+                this.toastService.success();
+                this.dialogRef.close(true);
+            },
+            () => this.toastService.error()
+        );
     }
 }

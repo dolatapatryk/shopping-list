@@ -39,6 +39,7 @@
         "express": "^4.17.1",
         "hammerjs": "^2.0.8",
         "jquery": "^3.6.0",
+        "ngx-toastr": "^13.2.1",
         "path": "^0.12.7",
         "rxjs": "~6.5.4",
         "sockjs-client": "^1.4.0",

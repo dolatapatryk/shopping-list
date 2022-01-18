@@ -18,11 +18,11 @@ export class ShoppingListSaveComponent {
         private shoppingListsService: ShoppingListsService,
         private router: Router
     ) {
-        this.shoppingList = { products: this.data.products, name: '' };
+        // this.shoppingList = { products: this.data.products, name: '' };
     }
 
     save() {
-        this.shoppingListsService.addShoppingList(this.shoppingList);
+        this.shoppingListsService.save(this.shoppingList);
         this.router.navigate(['/']).then(() => this.dialogRef.close());
     }
 }

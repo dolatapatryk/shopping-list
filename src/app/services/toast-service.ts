@@ -1,0 +1,19 @@
+import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class ToastService {
+
+    constructor(private toastr: ToastrService) {
+    }
+
+    success(message?: string, title?: string) {
+        this.toastr.success(message ? message : 'Git', title);
+    }
+
+    error(message?: string, title?: string) {
+        this.toastr.error(message ? message : 'Coś się zjebało', title);
+    }
+}
