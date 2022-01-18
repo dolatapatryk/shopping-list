@@ -13,6 +13,10 @@ export abstract class AbstractService<T extends Id, RBT> {
         return this.http.get<T[]>(this.url);
     }
 
+    getById(id: number): Observable<T> {
+        return this.http.get<T>(this.getIdUrl(id));
+    }
+
     save(element: T): Observable<HttpResponse<Id | any>> {
         if (element.id) {
             return this.edit(element.id, element);

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ShoppingListsComponent } from './shopping-lists/shopping-lists.component';
 import { ShoppingListEditComponent } from './shopping-list-edit/shopping-list-edit.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { ShoppingListResolver } from './shopping-list/shopping-list.resolver';
 
 const routes: Routes = [
     {
@@ -16,6 +17,7 @@ const routes: Routes = [
     },
     {
         path: ':listId',
+        resolve: { list: ShoppingListResolver },
         children: [
             {
                 path: '',

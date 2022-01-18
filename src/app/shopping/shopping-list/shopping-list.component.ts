@@ -22,22 +22,27 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        // this.list = this.route.snapshot.data.list;
-        this.webSocketService = new WebSocketService();
-        this.webSocketService.connect();
-        // this.checkedCount = this.list.products.filter(product => product.mark).length;
-        // this.checkAllMarked();
-        // this.departmentsService.getDepartments().subscribe(body => this.departments = body);
+        this.list = this.route.snapshot.data.list;
+        this.webSocketService = new WebSocketService(this);
+        this.webSocketService.connect(this.list.id);
+        this.departmentsService.findAll().subscribe(body => this.departments = body);
     }
 
     ngOnDestroy() {
         this.webSocketService.disconnect();
     }
 
+    updateProducts(products: ShoppingListProduct[]) {
+        this.list.products = products;
+        this.checkedCount = this.list.products.filter(product => product.mark).length;
+        this.checkAllMarked();
+    }
+
     markItemChange(item: ShoppingListProduct, checked: boolean) {
         item.mark = checked;
         this.checkedCount += checked ? 1 : -1;
         this.checkAllMarked();
+        this.webSocketService.send();
     }
 
     private checkAllMarked() {

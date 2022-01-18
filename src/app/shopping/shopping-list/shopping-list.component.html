@@ -4,13 +4,13 @@
             <ng-template let-item="item" let-index="index">
                 <div class="d-flex">
                     <div class="d-flex align-items-center pr-2">
-                        <mat-checkbox class="product-checkbox" [ngModel]="item.mark"
+                        <mat-checkbox class="product-checkbox" [ngModel]="item.marked"
                                       (change)="markItemChange(item, $event.checked)"></mat-checkbox>
                     </div>
                     <div class="d-flex flex-column w-100 p-1">
-                        <span>{{index + 1}}. {{item.name}}</span>
+                        <span>{{index + 1}}. {{item.product.name}}</span>
                         <div class="d-flex product-info">
-                            <span class="text-truncate">{{item.departmentId | departmentName:departments}}</span>
+                            <span class="text-truncate">{{item.product.departmentId | departmentName:departments}}</span>
                             <div class="ml-auto">
                                 <span class="pr-1">{{item.quantity}}</span>
 <!--                                <span class="hide-on-swipe">{{item.unitId | unitName}}</span>-->
