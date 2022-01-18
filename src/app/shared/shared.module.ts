@@ -8,7 +8,6 @@ import { SwipeAngularListModule } from 'swipe-angular-list';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { DialogLayoutComponent } from './dialog-layout/dialog-layout.component';
-import { UnitNamePipe } from './pipes/unit-name.pipe';
 import { FormsModule } from '@angular/forms';
 import { IsProductChosenPipe } from './pipes/is-product-chosen.pipe';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
@@ -24,7 +23,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
         TouchListLayoutComponent,
         ProductsListComponent,
         DialogLayoutComponent,
-        UnitNamePipe,
         IsProductChosenPipe,
         ConfirmationDialogComponent,
         ProductSaveComponent
@@ -36,8 +34,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
         TouchListLayoutComponent,
         FontAwesomeModule,
         ProductsListComponent,
-        DialogLayoutComponent,
-        UnitNamePipe
+        DialogLayoutComponent
     ],
     imports: [
         CommonModule,
