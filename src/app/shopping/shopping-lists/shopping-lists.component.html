@@ -1,4 +1,5 @@
 <app-touch-list-layout [items]="lists" (addButtonClicked)="navigateToAddShoppingList()"
+                       (editClicked)="editShoppingList($event)"
                        (deleteClicked)="deleteShoppingList($event)"
                        (itemClicked)="goToList($event)">
     <ng-template let-item="item" let-index="index">

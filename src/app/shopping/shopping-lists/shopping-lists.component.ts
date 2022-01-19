@@ -22,6 +22,10 @@ export class ShoppingListsComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.getLists();
+    }
+
+    private getLists() {
         this.shoppingListsService.findAll().subscribe(body => this.lists = body);
     }
 
@@ -34,7 +38,7 @@ export class ShoppingListsComponent implements OnInit {
     }
 
     deleteShoppingList(list: ShoppingList) {
-        this.dialog.open(ConfirmationDialogComponent, {
+        const dialog = this.dialog.open(ConfirmationDialogComponent, {
             minWidth: '300px',
             data: {
                 title: 'Usuń listę zakupów',
@@ -42,5 +46,14 @@ export class ShoppingListsComponent implements OnInit {
                 action: () => this.shoppingListsService.delete(list.id)
             }
         });
+        dialog.afterClosed().subscribe(result => {
+            if (result) {
+                this.getLists();
+            }
+        });
+    }
+
+    editShoppingList(list: ShoppingList) {
+        this.router.navigate([list.id, 'edit'], { relativeTo: this.route });
     }
 }

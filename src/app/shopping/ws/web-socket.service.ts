@@ -4,7 +4,7 @@ import { ShoppingListComponent } from '../shopping-list/shopping-list.component'
 
 export class WebSocketService {
     private webSocketEndpoint = 'http://localhost:8090/ws';
-    private topic = '/topic/shopping-list-products';
+    private getProductsTopic = '/topic/shopping-list-products';
     private stompClient: CompatClient;
     private listId: number;
 
@@ -17,10 +17,10 @@ export class WebSocketService {
         const ws = new SockJS(this.webSocketEndpoint);
         this.stompClient = Stomp.over(ws);
         this.stompClient.connect({}, frame => {
-            this.stompClient.subscribe(this.topic, event => {
+            this.stompClient.subscribe(this.getProductsTopic, event => {
                 this.onMessageReceived(event);
             });
-            this.send();
+            this.productsRequest();
         });
     }
 
@@ -31,8 +31,13 @@ export class WebSocketService {
         console.log('Disconnected ws');
     }
 
-    send() {
+    productsRequest() {
         this.stompClient.send('/app/get-shopping-list-products', {}, JSON.stringify(this.listId));
+    }
+
+    markProduct(productId: number, marked: boolean) {
+        const data = { listId: this.listId, productId, marked };
+        this.stompClient.send('/app/mark-product', {}, JSON.stringify(data));
     }
 
     onMessageReceived(event: any) {

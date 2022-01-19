@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ShoppingListProduct } from '../../models/product';
 
@@ -7,7 +7,7 @@ import { ShoppingListProduct } from '../../models/product';
     templateUrl: './product-list-add.component.html',
     styleUrls: ['./product-list-add.component.scss']
 })
-export class ProductListAddComponent implements OnInit {
+export class ProductListAddComponent {
     product: ShoppingListProduct;
 
     constructor(
@@ -15,9 +15,6 @@ export class ProductListAddComponent implements OnInit {
         private dialogRef: MatDialogRef<ProductListAddComponent>
     ) {
         this.product = this.data.product;
-    }
-
-    ngOnInit(): void {
     }
 
     addItem() {

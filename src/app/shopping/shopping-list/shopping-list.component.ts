@@ -38,11 +38,9 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
         this.checkAllMarked();
     }
 
-    markItemChange(item: ShoppingListProduct, checked: boolean) {
-        item.mark = checked;
-        this.checkedCount += checked ? 1 : -1;
-        this.checkAllMarked();
-        this.webSocketService.send();
+    markItemChange(item: any, checked: boolean) {
+        item.marked = checked;
+        this.webSocketService.markProduct(item.product.id, checked);
     }
 
     private checkAllMarked() {

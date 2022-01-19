@@ -28,9 +28,9 @@ export class ShoppingListsService extends AbstractService<ShoppingList, Shopping
         return super.findAll();
     }
 
-    protected getRequestBody(list: ShoppingList): ShoppingListRequestBody {
+    protected getRequestBody(list: ShoppingList, mode: 'add' | 'edit'): ShoppingListRequestBody {
         const products = list.products.map(p => {
-            return { product: p as Product, marked: p.mark, quantity: p.quantity };
+            return { product: p as Product, marked: mode === 'add' ? false : p.mark, quantity: p.quantity };
         });
         return { name: list.name, description: list.description, products };
     }

@@ -26,16 +26,16 @@ export abstract class AbstractService<T extends Id, RBT> {
     }
 
     private add(element: T): Observable<HttpResponse<Id>> {
-        return this.http.post<Id>(this.url, this.getRequestBody(element), { observe: 'response' })
+        return this.http.post<Id>(this.url, this.getRequestBody(element, 'add'), { observe: 'response' })
             .pipe(this.invalidateCache());
     }
 
     private edit(id: number, element: T): Observable<HttpResponse<any>> {
-        return this.http.put(this.getIdUrl(id), this.getRequestBody(element), { observe: 'response' })
+        return this.http.put(this.getIdUrl(id), this.getRequestBody(element, 'edit'), { observe: 'response' })
             .pipe(this.invalidateCache());
     }
 
-    protected abstract getRequestBody(element: T): RBT;
+    protected abstract getRequestBody(element: T, mode?: 'add' | 'edit'): RBT;
 
     delete(id: number): Observable<HttpResponse<any>> {
         return this.http.delete(this.getIdUrl(id), { observe: 'response' }).pipe(this.invalidateCache());
