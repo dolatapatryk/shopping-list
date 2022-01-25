@@ -26,7 +26,9 @@ export class ShoppingListsComponent implements OnInit {
     }
 
     private getLists() {
-        this.shoppingListsService.findAll().subscribe(body => this.lists = body);
+        this.shoppingListsService.findAll().subscribe(
+            body => this.lists = body.sort((a, b) => (a.closed ? 1 : 0) - (b.closed ? 1 : 0))
+        );
     }
 
     navigateToAddShoppingList() {

@@ -25,11 +25,14 @@ export class ConfirmationDialogComponent {
     }
 
     submit() {
-        const result = this.action();
-        if (result instanceof Observable) {
-            this.subscribeResult(result);
+        if (this.action) {
+            const result = this.action();
+            if (result instanceof Observable) {
+                this.subscribeResult(result);
+            }
+        } else {
+            this.close(true);
         }
-        this.close(true);
     }
 
     private subscribeResult(result: Observable<HttpResponse<any>>) {

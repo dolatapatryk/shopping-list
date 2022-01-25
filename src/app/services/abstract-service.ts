@@ -41,11 +41,11 @@ export abstract class AbstractService<T extends Id, RBT> {
         return this.http.delete(this.getIdUrl(id), { observe: 'response' }).pipe(this.invalidateCache());
     }
 
-    private getIdUrl(id: number) {
+    protected getIdUrl(id: number) {
         return `${this.url}/${id}`;
     }
 
-    private invalidateCache(): OperatorFunction<any, any> {
+    protected invalidateCache(): OperatorFunction<any, any> {
         return tap(() => CacheableService.getInstance().invalidate(this.cacheKey));
     }
 }

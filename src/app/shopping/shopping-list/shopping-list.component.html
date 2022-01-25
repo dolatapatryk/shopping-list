@@ -20,7 +20,7 @@
             </ng-template>
         </app-touch-list-layout>
     </div>
-    <button *ngIf="allChecked" mat-raised-button class="add-button mt-auto">
+    <button *ngIf="allChecked" (click)="closeList()" mat-raised-button class="add-button mt-auto">
         Zakończ
     </button>
 </div>

@@ -3,7 +3,7 @@
                        (deleteClicked)="deleteShoppingList($event)"
                        (itemClicked)="goToList($event)">
     <ng-template let-item="item" let-index="index">
-        <div class="d-flex flex-column w-100 p-1">
+        <div class="d-flex flex-column w-100 p-1" [ngClass]="item.closed ? 'list-closed': ''">
             <span>{{index + 1}}. {{item. name}}</span>
             <div class="d-flex list-info">
                 <span class="text-truncate">{{item.description}}</span>

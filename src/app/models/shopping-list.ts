@@ -5,4 +5,5 @@ export interface ShoppingList extends Id {
     name: string;
     description?: string;
     products: ShoppingListProduct[];
+    closed?: boolean;
 }

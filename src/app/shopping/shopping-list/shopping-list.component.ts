@@ -1,9 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../models/product';
 import { DepartmentService } from '../../services/department.service';
 import { Department } from '../../models/department';
 import { WebSocketService } from '../ws/web-socket.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/confirmation-dialog.component';
+import { ShoppingListsService } from '../../services/shopping-lists.service';
 
 interface ListProduct {
     product: Product;
@@ -24,7 +27,13 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     private webSocketService: WebSocketService;
     productSort = (a: ListProduct, b: ListProduct) => a.product.departmentId - b.product.departmentId;
 
-    constructor(private route: ActivatedRoute, private departmentsService: DepartmentService) {
+    constructor(
+        private route: ActivatedRoute,
+        private departmentsService: DepartmentService,
+        private dialog: MatDialog,
+        private shoppingListService: ShoppingListsService,
+        private router: Router
+    ) {
     }
 
     ngOnInit(): void {
@@ -57,5 +66,24 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
         this.allChecked = marked.length === products.length;
         const unmarked = sorted.filter(p => !p.marked);
         return [...unmarked, ...marked];
+    }
+
+    closeList() {
+        const dialog = this.dialog.open(ConfirmationDialogComponent, {
+            minWidth: '300px',
+            data: {
+                title: 'Zamknij listę zakupów',
+                message: 'Czy chcesz zamknąć listę?'
+            }
+        });
+        dialog.afterClosed().subscribe(result => {
+            if (result) {
+                this.webSocketService.closeList();
+            }
+        });
+    }
+
+    routeToMainScreen() {
+        this.router.navigate(['/']);
     }
 }
