@@ -39,7 +39,7 @@
                             "node_modules/bootstrap/dist/js/bootstrap.min.js"
                         ],
                         "allowedCommonJsDependencies": [
-                            "hammerjs"
+                            "hammerjs", "sockjs-client"
                         ]
                     },
                     "configurations": {
@@ -61,7 +61,7 @@
                             "budgets": [
                                 {
                                     "type": "initial",
-                                    "maximumWarning": "2mb",
+                                    "maximumWarning": "4mb",
                                     "maximumError": "5mb"
                                 },
                                 {

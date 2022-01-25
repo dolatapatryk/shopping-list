@@ -5,7 +5,7 @@ import { CacheableService } from 'angular-cacheable';
 import { ShoppingListsService } from '../../services/shopping-lists.service';
 
 export class WebSocketService {
-    private webSocketEndpoint = 'http://localhost:8090/ws';
+    private webSocketEndpoint = 'http://patrykdolata.com:8090/ws';
     private getProductsTopic = '/topic/shopping-list-products';
     private refreshListsTopic = '/topic/refresh-lists';
     private stompClient: CompatClient;

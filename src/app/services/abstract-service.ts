@@ -1,16 +1,18 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, OperatorFunction } from 'rxjs';
 import { Id } from '../models/id';
-import { catchError, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { CacheableService } from 'angular-cacheable';
 
 export abstract class AbstractService<T extends Id, RBT> {
+    private baseUrl = 'http://patrykdolata.com:8090/';
 
-    protected constructor(protected http: HttpClient, private url: string, private cacheKey: string) {
+    protected constructor(protected http: HttpClient, private readonly url: string, private cacheKey: string) {
+        this.url = `${this.baseUrl}${url}`;
     }
 
     protected findAll(): Observable<T[]> {
-        return this.http.get<T[]>(this.url).pipe(catchError(this.invalidateCache));
+        return this.http.get<T[]>(this.url); // .pipe(catchError(this.invalidateCache));
     }
 
     getById(id: number): Observable<T> {

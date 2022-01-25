@@ -17,7 +17,7 @@ interface ShoppingListRequestBody {
 })
 export class ShoppingListsService extends AbstractService<ShoppingList, ShoppingListRequestBody> {
     public static CACHE_KEY = 'get-shopping-lists';
-    private static URL = 'http://localhost:8090/api/shopping-lists';
+    private static URL = 'api/shopping-lists';
 
     constructor(http: HttpClient) {
         super(http, ShoppingListsService.URL, ShoppingListsService.CACHE_KEY);

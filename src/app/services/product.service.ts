@@ -15,7 +15,7 @@ interface ProductRequestBody {
 })
 export class ProductService extends AbstractService<Product, ProductRequestBody> {
     private static CACHE_KEY = 'get-products';
-    private static URL = 'http://localhost:8090/api/products';
+    private static URL = 'api/products';
 
     constructor(http: HttpClient) {
         super(http, ProductService.URL, ProductService.CACHE_KEY);

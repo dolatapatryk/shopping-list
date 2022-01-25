@@ -14,7 +14,7 @@ interface DepartmentRequestBody {
 })
 export class DepartmentService extends AbstractService<Department, DepartmentRequestBody> {
     private static CACHE_KEY = 'get-departments';
-    private static URL = 'http://localhost:8090/api/departments';
+    private static URL = 'api/departments';
 
     constructor(http: HttpClient) {
         super(http, DepartmentService.URL, DepartmentService.CACHE_KEY);
