@@ -1,6 +1,6 @@
 <div class="h-100 d-flex flex-column">
     <div class="product-list-container">
-        <app-touch-list-layout [items]="list?.products" [addButtonVisible]="false" [enableSwipe]="false">
+        <app-touch-list-layout [items]="products" [addButtonVisible]="false" [enableSwipe]="false">
             <ng-template let-item="item" let-index="index">
                 <div class="d-flex">
                     <div class="d-flex align-items-center pr-2">
@@ -13,7 +13,6 @@
                             <span class="text-truncate">{{item.product.departmentId | departmentName:departments}}</span>
                             <div class="ml-auto">
                                 <span class="pr-1">{{item.quantity}}</span>
-<!--                                <span class="hide-on-swipe">{{item.unitId | unitName}}</span>-->
                             </div>
                         </div>
                     </div>

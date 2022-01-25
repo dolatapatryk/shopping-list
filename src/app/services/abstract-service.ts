@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, OperatorFunction } from 'rxjs';
 import { Id } from '../models/id';
-import { tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { CacheableService } from 'angular-cacheable';
 
 export abstract class AbstractService<T extends Id, RBT> {
@@ -10,7 +10,7 @@ export abstract class AbstractService<T extends Id, RBT> {
     }
 
     protected findAll(): Observable<T[]> {
-        return this.http.get<T[]>(this.url);
+        return this.http.get<T[]>(this.url).pipe(catchError(this.invalidateCache));
     }
 
     getById(id: number): Observable<T> {
